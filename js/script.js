@@ -6,15 +6,12 @@
 
 window.onload = function () {
     var dataList = {
-	classValue: 'app',
+	classValue: 'face',
 	innerText: '欢迎来到麦子学院！'
     };
     new Vue({
 	el: 'div',
-	data: {
-	    classValue: 'app',
-	    innerText: '欢迎来到麦子学院！'
-	}
+	data: dataList
     });
 };
 

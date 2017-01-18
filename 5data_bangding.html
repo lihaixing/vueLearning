@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<meta charset="UTF-8">
+	<title>数据绑定</title>
+	<style>
+	    .bg_blue{
+		background-color:#cccccc;
+	    }
+	    #item_font30{
+		font-size: 30px;
+	    }
+	</style>
+	<script type="text/javascript" src="js/vue.js"></script>
+    </head>
+    <body>
+	<div id="item" class="{{classValue}}">
+	    {{name}}
+	    <div>
+		<!--插入值前面加*表示单次插入，插入后值不会再变动-->
+		{{*age}} 
+	    </div>
+	    <div>
+		<p>{{{innerHtml}}}</p>	
+		<!--插入html文本时，要用三个{},否则标签会被当做文本-->
+
+		<p id="item_{{idValue}}">{{innerText}}</p>	
+	    </div>
+	    <div>
+		<!--
+		插入js表达式
+		这是一个语句，不是表达式
+		{{var a=1}}
+		流程控制也不可以，可改为三元
+		{{if(ok){return message}}}
+		-->
+		{{age+'a'+1}}
+		<br>
+		{{4<2?age:innerText}}
+		<br>
+		<!--
+		过滤器{{message|capitalize}}前面是文本或表达式等，后面是过滤器
+		过滤器有的是vue内置的，也可以自己创建过滤器
+		过滤器可以串联，例如{{message|filterA|filterB}}
+		过滤器还可接收参数，例如{{message|filter 'arg1' arg2}}
+		-->
+		{{name|uppercase}}
+	    </div>
+	</div>
+	<div id="item2">
+	    <!--
+		指令是指特殊带有前缀v-的特性
+		例如 <p v-if="greeting">Hello!</p>表示如果greeting为真就显示，否则就不显示
+		v-model表示给模型赋值,它的属性值相当于app对象中的属性
+	    -->
+	    <input type="text" v-model="display1">
+	    <div v-if="display1">{{ innerText }}</div>
+	</div>
+	<!--以下div中调age不管用，因为该元素没在#item中-->
+	<div>
+	    {{age}}
+	</div>
+
+	<script>
+window.onload = function () {
+    var obj = {
+	name: 'haixing.li',
+	age: 28,
+	classValue: "bg_blue",
+	idValue: 'font30',
+	innerText: '欢迎来到麦子学院!',
+	innerHtml: '欢迎来到<i style="color:green">麦子学院</i>'
+    };
+    var app = new Vue({
+	el: '#item',
+	data: obj
+    });
+    app.age = 30;
+    
+    var app2 = new Vue({
+	el: '#item2',
+	data: obj
+    });
+    //文本值插入
+    console.log(app.el);//undefined
+    console.log(app.$el);// <div id="item" class="bg_blue">
+	
+};
+	</script>
+    </body>
+</html>

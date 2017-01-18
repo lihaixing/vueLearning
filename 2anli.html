@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<meta charset="UTF-8">
+	<title>Vue.js</title>
+	<style>
+	    
+	</style>
+	<script type="text/javascript" src="js/vue.js"></script>
+    </head>
+    <body>
+	<div id="item"></div>
+	<script>
+	  window.onload=function(){
+	      var obj={
+		  name:'haixing.li',
+		  age:28
+	      };
+	      var app=new Vue({
+		  el:'#item',
+		  data:obj
+	      });
+	      console.log(app.name);
+	      console.log(app.age);
+	      obj.name='haixing.li2';
+	      console.log(app.name);
+	      app.name='haixing.li3';
+	      console.log(app.name);
+	      console.log(obj.name);//修改成功
+	      //添加新属性
+	      obj.address='山西大同';
+	      console.log(obj.address);//山西大同
+	      console.log(app.address);//undefined
+	      app.sex='男';
+	      console.log(app.sex);//男
+	      console.log(obj.sex);//undefined
+	      //元素
+	      console.log(app.$el===document.getElementById('item'));//true
+	      //生命周期
+	      
+	  };
+	</script>
+    </body>
+</html>

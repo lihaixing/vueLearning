@@ -7,6 +7,8 @@ and open the template in the editor.
     Created on : 2017-1-18, 0:50:03
     Author     : 344
 */
+
+/*第一节*/
 .app {
     font-family: 'Microsoft Yahei';
     font-size: 48px;
@@ -52,4 +54,14 @@ and open the template in the editor.
     border: 5px solid black;
     border-radius: 50%;
 }
+
+.face { font-family: 'Microsoft Yahei'; font-size: 48px; font-weight: bold; line-height: 600px; position: fixed; top: 0; right: 0; bottom: 0; left: 0; width: 800px; height: 600px; margin: auto; text-align: center; border: 5px solid black; border-radius: 50%; }
+.face:before { position: absolute; top: 0; right: -200px; bottom: 0; display: block; width: 100px; height: 100px; margin: auto; content: ''; border: 5px solid black; border-radius: 50%; }
+.face:after { position: absolute; top: 0; bottom: 0; left: -200px; display: block; width: 100px; height: 100px; margin: auto; content: ''; border: 5px solid black; border-radius: 50%; }
+
+.msg { font-family: 'Microsoft Yahei'; font-size: 48px; font-weight: bold; line-height: 400px; position: fixed; top: 0; right: 0; bottom: 0; left: 0; width: 800px; height: 400px; margin: auto; text-align: center; border: 5px solid black; border-radius: 50%; }
+.msg:before { position: absolute; top: 300px; right: -50px; display: block; width: 100px; height: 100px; margin: auto; content: ''; border: 5px solid black; border-radius: 50%; }
+.msg:after { position: absolute; top: 400px; right: -100px; display: block; width: 50px; height: 50px; margin: auto; content: ''; border: 5px solid black; border-radius: 50%; }
+
+
 
