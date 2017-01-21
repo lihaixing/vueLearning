@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<meta charset="UTF-8">
+	<title>计算属性</title>
+	<style>
+
+	</style>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+    </head>
+    <body>
+	<div id="box">
+	    a={{a}};
+	    b={{b}};
+	    <input type="text" v-model="firstName">
+	    <input type="text" v-model="lastName">
+	    <p>{{fullName}}</p>
+	</div>
+
+	<script type="text/javascript">
+$(document).ready(function () {
+    var obj = {
+	a: 1,
+	firstName:'LI',
+	lastName:'Haixing',
+//	fullName:'LI Haixing'
+    };
+    var app = new Vue({
+	el: '#box',
+	data: obj,
+	computed: {
+	    b: function () {
+		return this.a + 1;
+	    },
+	    //和$watch方法一样
+	    fullName:function(){
+		return this.firstName+' '+this.lastName;
+	    }
+	}
+    });
+    
+    setInterval(function(){
+	app.a++;
+    },1000);
+    console.log(app.b);
+    
+    //监视属性
+//    app.$watch('firstName',function(val){
+//	this.fullName=val+' '+this.lastName;
+//    });
+//    app.$watch('lastName',function(val){
+//	this.fullName=this.lastName+' '+val;
+//    });   
+});
+	</script>
+    </body>
+</html>
