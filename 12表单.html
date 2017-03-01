@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+	<title>TODO supply a title</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="js/vue.js"></script>
+	<!--<script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>-->
+	<!--<script type="text/javascript" src="http://cdn.bootcss.com/vue/2.1.10/vue.js"></script>-->
+    </head>
+    <body id="app">
+
+	<form action="">
+	    <div>
+		<input type="text" v-model="text">
+		<div>{{text}}</div>
+	    </div>
+
+	    <div>
+		<input id="radio" type="radio" value="lalal" v-model="radio">
+		<label for="radio">hello1</label>
+		<input id="radio1" type="radio" value="lalal2" v-model="radio">
+		<label for="radio1">hello2</label>
+		<input id="radio2" type="radio" value="lalal3" v-model="radio">
+		<label for="radio2">hello3</label>
+		<div>{{radio}}</div>
+	    </div>
+	    <div>
+		<input id="checkbox" type="checkbox" value="lalal" v-model="argument">
+		<label for="checkbox">checkbox</label>
+		<input id="checkbox1" type="checkbox" value="lalal2" v-model="argument">
+		<label for="checkbox1">checkbox1</label>
+		<input id="checkbox2" type="checkbox" value="lalal3" v-model="argument">
+		<label for="checkbox2">checkbox2</label>
+		<div>{{argument}}</div>
+	    </div>
+	    <div>
+		<select v-model="select">
+		    <option>val1</option>
+		    <option>val2</option>
+		    <option>val3</option>
+		</select>
+		<div>{{select}}</div>
+	    </div>
+	    <div>
+		<select v-model="select2" multiple="multiple">
+		    <option>val1</option>
+		    <option>val2</option>
+		    <option>val3</option>
+		</select>
+		<div>{{select2}}</div>
+	    </div>
+
+	    <select v-model="selected" multiple="multiple">
+		<option v-for="option in options" v-bind:value="option.value">
+		    {{ option.text }}
+		</option>
+	    </select>
+	    <span>Selected: {{ selected }}</span>
+	</form>
+	<script type="text/javascript">
+new Vue({
+    el: "#app",
+    data: {
+	argument: [],
+	selected: 'A',
+	options: [
+	    {text: 'One', value: 'A'},
+	    {text: 'Two', value: 'B'},
+	    {text: 'Three', value: 'C'}
+	]
+    }
+});
+	</script>
+    </body>
+</html>
