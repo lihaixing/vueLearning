@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+	<title>TODO supply a title</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="js/vue.js"></script>
+	<style>
+	    .classA{
+		color:red;
+	    }
+	    .classB{
+		color:blue;
+	    }
+	</style>
+    </head>
+    <body>
+	<div class="head" v-bind:class='{"classA":red,"classB":blue}'>TODO write content</div>
+	<div class="head2" v-bind:class="classobj">TODO write content</div>
+
+	<script type="text/javascript">
+	    //对象绑定法1
+	    var bdObj = new Vue({
+		el: ".head",
+		data: {
+		    red: false,
+		    blue: true
+		}
+	    });
+	    //对象绑定法2
+	    var bdObj2 = new Vue({
+		el: ".head2",
+		data: {
+		    classobj: {
+			classA: false,
+			classB: true
+		    }
+		}
+	    });
+	    setTimeout(function () {
+		bdObj.red = true;
+		bdObj.blue = false;
+	    }, 2000);
+	    setTimeout(function () {
+		bdObj2.classobj.classA = true;
+		bdObj2.classobj.classB = false;
+	    }, 2000);
+	</script>
+    </body>
+</html>

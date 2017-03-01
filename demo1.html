@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+	<title>TODO supply a title</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="http://cdn.bootcss.com/vue/2.1.10/vue.js"></script>
+    </head>
+    <body>
+	<div id="app">
+	    <!--传入参数，生成还=-->
+	    <list-component v-bind:data="lists">
+
+	    </list-component>
+	</div>
+	<script>
+	    var data = [
+	    {
+	    title: "hello",
+		    content: "今天是个好日子",
+		    id: "20"
+	    },
+	    {
+	    title: "hello",
+		    content: "今天是个好日子",
+		    id: "20"
+	    },
+	    {
+	    title: "hello",
+		    content: "今天是个好日子",
+		    id: "20"
+	    }
+
+	    ];
+	    Vue.component('list-component', {
+	    props: ['data'],
+		    template:  ` < table >
+		    < tbody >
+		    < tr v - for = "item in data" >
+		    < td > {{item.id}} < /td>
+		    < td > {{item.title}} < /td>
+		    < td > {{item.content}} < /td>
+		    < /tr>
+		    < /tbody>
+		    < /table>
+		    `
+	    });
+	    new Vue({
+	    el: "#app",
+		    data: {
+		    lists: data
+		    }
+	    });
+
+	</script>
+    </body>
+</html>

@@ -13,20 +13,20 @@
 	</style>
 	<script type="text/javascript" src="js/vue.js"></script>
 	<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
-	
+
     </head>
     <body>
 	<div id="item" class="{{classValue}}">
 	    {{name}}
 	    <div>
 		<!--插入值前面加*表示单次插入，插入后值不会再变动-->
-		{{*age}} 
+		{{*age}}
 	    </div>
 	    <div>
-		<p>{{{innerHtml}}}</p>	
+		<p>{{{innerHtml}}}</p>
 		<!--插入html文本时，要用三个{},否则标签会被当做文本-->
 
-		<p id="item_{{idValue}}">{{innerText}}</p>	
+		<p id="item_{{idValue}}">{{innerText}}</p>
 	    </div>
 	    <div>
 		<!--
@@ -40,6 +40,7 @@
 		<br>
 		{{4<2?age:innerText}}
 		<br>
+
 		<!--
 		过滤器{{message|capitalize}}前面是文本或表达式等，后面是过滤器
 		过滤器有的是vue内置的，也可以自己创建过滤器
@@ -55,52 +56,64 @@
 		例如 <p v-if="greeting">Hello!</p>表示如果greeting为真就显示，否则就不显示 0也是真
 		v-model表示给模型赋值,它的属性值相当于app对象中的属性
 	    -->
-	    
+
 	    <input type="text" v-model="haha">
 	    <div v-if="haha">{{ innerText }}</div>
-	    
-	    <!--参数（href)、修饰符(literal)-->
+
+	    <!--参数（href)、修饰符(literal),修饰符往后再讲解-->
 	    <a v-bind:href="haha">百度</a>
+	    <!--相当于<a href="{{haha}}">百度</a>-->
+
 	    <a v-bind:href.literal="www.baidu.com">百度</a>
-	    <a v-on:click="doSomething">百度</a>
+	    <a v-on:click="doSomething('a')">百度</a>
+	    <!--相当于 <a onclick="{{doSomething}}">百度</a>-->
+
+
 	    <!--这两个指令可以缩写：-->
 	    <a :href.literal="www.baidu.com">百度</a>
 	    <a @click="www.baidu.com">百度</a>
-	    
+
 	</div>
-	
+
 	<!--以下div中调age不管用，因为该元素没在#item中-->
 	<div>
 	    {{age}}
 	</div>
 
-	<script type="text/javascript">
-	    window.onload = function () {
-		var obj = {
-		    name: 'haixing.li',
-		    age: 28,
-		    classValue: "bg_blue",
-		    idValue: 'font30',
-		    innerText: '欢迎来到麦子学院!',
-		    innerHtml: '欢迎来到<i style="color:green">麦子学院</i>'
-		};
-		var app = new Vue({
-		    el: '#item',
-		    data: obj
-		});
-		app.age = 30;
 
-		var app2 = new Vue({
-		    el: '#item2',
-		    data: obj
-		});
-		//文本值插入
-		console.log(app.el);//undefined
-		console.log(app.$el);// <div id="item" class="bg_blue">
-		    $('#item2 input').on('change',function(){
-			console.log(app2['haha']);
-		    });
-	    };
+	<script type="text/javascript">
+window.onload = function () {
+    var obj = {
+	name: 'haixing.li',
+	age: 28,
+	classValue: "bg_blue",
+	idValue: 'font30',
+	innerText: '欢迎来到麦子学院!',
+	innerHtml: '欢迎来到<i style="color:green">麦子学院</i>'
+    };
+    var app = new Vue({
+	el: '#item',
+	data: obj
+    });
+    app.age = 30;//没有修改成功，因为*
+
+    var app2 = new Vue({
+	el: '#item2',
+	data: obj,
+	methods: {
+	    doSomething: function (index) {
+		alert(index);
+	    }
+	}
+    });
+    //文本值插入
+    console.log(app.el);//undefined
+    console.log(app.$el);// <div id="item" class="bg_blue">
+    $('#item2 input').on('change', function () {
+	console.log(app2['haha']);
+    });
+
+};
 	</script>
     </body>
 </html>

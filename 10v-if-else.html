@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+	<title>TODO supply a title</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="./js/vue.js"></script>
+	<style>
+	    .red{
+		color:red;
+	    }
+	    .blue{
+		color:blue;
+	    }
+	</style>
+    </head>
+    <body id="app">
+	<!--if可用show代替-->
+	<div v-if="display" class="red">hello world</div>
+	<div v-else="display" class="blue">hello world</div>
+	<script type="text/javascript">
+
+	    var app = new Vue({
+		el: '#app',
+		data: {
+		    display: true
+		}
+	    });
+	    setTimeout(function () {
+		app.display = false;
+	    }, 2000);
+	</script>
+    </body>
+</html>

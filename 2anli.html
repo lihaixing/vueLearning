@@ -4,41 +4,51 @@
 	<meta charset="UTF-8">
 	<title>Vue.js</title>
 	<style>
-	    
+
 	</style>
 	<script type="text/javascript" src="js/vue.js"></script>
     </head>
     <body>
 	<div id="item"></div>
+	<div class="item"></div>
+	<div class="item"></div>
 	<script>
-	  window.onload=function(){
-	      var obj={
-		  name:'haixing.li',
-		  age:28
-	      };
-	      var app=new Vue({
-		  el:'#item',
-		  data:obj
-	      });
-	      console.log(app.name);
-	      console.log(app.age);
-	      obj.name='haixing.li2';
-	      console.log(app.name);
-	      app.name='haixing.li3';
-	      console.log(app.name);
-	      console.log(obj.name);//修改成功
-	      //添加新属性
-	      obj.address='山西大同';
-	      console.log(obj.address);//山西大同
-	      console.log(app.address);//undefined
-	      app.sex='男';
-	      console.log(app.sex);//男
-	      console.log(obj.sex);//undefined
-	      //元素
-	      console.log(app.$el===document.getElementById('item'));//true
-	      //生命周期
-	      
-	  };
+	    window.onload = function () {
+		var obj = {
+		    name: 'haixing.li',
+		    age: 28
+		};
+		var app = new Vue({
+		    el: '#item',
+		    data: obj
+		});
+
+		obj.name = 'haixing.li2';
+		console.log(app.name);//修改成功
+
+		app.name = 'haixing.li3';
+		console.log(app.name);//修改成功
+		console.log(obj.name);//修改成功
+		//
+		//添加新属性
+		obj.address = '山西大同';
+		console.log(obj.address);//山西大同
+		console.log(app.address);//undefined 说明无法通过obj添加新属性
+		app.sex = '男';
+		console.log(app.sex);//男  修改成功
+		console.log(obj.sex);//undefined app中添加新属性不能影响obj
+		//元素
+		console.log(app.$el === document.getElementById('item'));//true
+		//生命周期
+
+		var app2 = new Vue({
+		    el: '.item',
+		    data: obj
+		});
+		console.log(app2.$el);
+		console.log(app2.$el === document.getElementsByClassName('item')[0]);//true
+
+	    };
 	</script>
     </body>
 </html>

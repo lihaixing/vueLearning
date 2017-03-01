@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+	<title>TODO supply a title</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="./js/vue.js"></script>
+    </head>
+    <body id="app">
+	<div v-for="i in arr">
+	    <!--$index指指数，i指每一项-->
+	    <span>{{$index}}</span>
+	    <span>{{i.id}}</span>
+	    <span>{{i.title}}</span>
+	    <span>{{i.content}}</span>
+	</div>
+
+	<!--使用模板标签，将只有子元素span,结构类似于<span></span><span></span><span></span>-->
+	<template v-for="i in arr">
+	    <!--$index指指数，i指每一项-->
+	    <span>{{$index}}</span>
+	    <span>{{i.id}}</span>
+	    <span>{{i.title}}</span>
+	    <span>{{i.content}}</span>
+	</template>
+
+	<!--对象结构-->
+	<div v-for="val in obj">
+	    <!--$key为键值，val指每一项-->
+	    <span>{{$key}}</span>
+	    <span>{{val.id}}</span>
+	    <span>{{val.title}}</span>
+	    <span>{{val.content}}</span>
+	</div>
+	<div>
+	    <span v-for="number in 10">{{ number }}</span>
+	    <div v-for="number in 10">
+		<div>{{ number }}</div>
+	    </div>
+	</div>
+	<script type="text/javascript">
+var arr = [
+    {
+	id: 1,
+	title: 'lala',
+	content: '我是一只小小鸟'
+    },
+    {
+	id: 1,
+	title: 'lala',
+	content: '我是一只小小鸟'
+    },
+    {
+	id: 1,
+	title: 'lala',
+	content: '我是一只小小鸟'
+    }
+];
+var obj = {
+    line1: {
+	id: 1,
+	title: 'lala',
+	content: '我是一只小小鸟'
+    },
+    line2: {
+	id: 2,
+	title: 'lala',
+	content: '我是一只小小鸟'
+    },
+    line3: {
+	id: 3,
+	title: 'lala',
+	content: '我是一只小小鸟'
+    }
+};
+new Vue({
+    el: '#app',
+    data: {
+	arr: arr,
+	obj: obj
+    }
+});
+	</script>
+    </body>
+</html>

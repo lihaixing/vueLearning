@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+	<title>TODO supply a title</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="js/vue.js"></script>
+	<style>
+	    .classA{
+		color:red;
+	    }
+	    .classB{
+		background:blue;
+	    }
+	</style>
+    </head>
+    <body id="app">
+	<!--任何地方都可用表达式-->
+	<div  v-bind:class="[class1,class2]">hello world</div>
+	<div  v-bind:class="[1<2?class2:class1]">hello world</div>
+	<script type="text/javascript">
+	    new Vue({
+		el: "#app",
+		data: {
+		    class1: "classA",
+		    class2: "classB"
+		}
+	    });
+	</script>
+    </body>
+</html>

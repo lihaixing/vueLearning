@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/vue/2.1.10/vue.js"></script>
+</head>
+<body>
+    <!-- 指令 -->
+    <!-- 双向数据绑定 -->
+    <div class="container">
+
+        <form action="" class="data_form">
+
+            <div class="input-group">
+                <label for="">输入姓名</label>
+                <input name="" class="form-control" type="text" v-model="data_name">
+            </div>
+            <br>
+            <div class="panel panel-primary" v-show="show">
+                <div class="panel-heading">您输入的姓名</div>
+                <div class="panel-body">{{data_name}}</div>
+            </div>
+
+            <button class="btn btn-default" type="submit">提交</button>
+            <a class="btn btn-default" v-on:click="toggle_show">{{text}}</a>
+        </form>
+        <!--双向数据绑定-->
+
+        <br>
+
+        <div class="panel panel-danger">
+            <div class="panel-heading">您输入的姓名</div>
+            <div class="panel-body">{{data_name}}</div>
+        </div>
+
+        <table class="table showTodo">
+            <thead>
+                <tr>
+                    <td>编号</td>
+                    <td>姓名</td>
+                    <td>删除</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(todo,index) in todoArr">
+                    <td>{{index}}</td>
+                    <td>{{todo}}</td>
+                    <td>
+                        <a class="btn btn-default" v-on:click="deleteThisList(index)">删除</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+<script>
+  
+    var writeName = new Vue({
+        el: '.data_form',
+        data: {
+            show: true,
+            data_name:"qiaoming",
+            text:"不显示结果"
+        },
+        methods: {
+            toggle_show:function(){
+                this.show = !this.show;
+                if(this.show){
+                    this.text = '不显示结果'
+                }else{
+                    this.text = '显示结果'
+                }
+            }
+        }
+    })
+    var showTodo = new Vue({
+        el: '.showTodo',
+        data: {
+            todoArr:[
+                "eat",
+                "play",
+                "like",
+                "drink"
+            ],
+            deleteThisList:function(index){
+                this.todoArr.splice(index,1)
+            }
+        }
+    })
+</script>
+</html>
